@@ -1,20 +1,16 @@
 def main():
     print("Hello, Fuzz 🐾")
     w = WrapNum()
+    # w.GoRight(1000)
+    # print(w.GetNewSecurityProtocolCountOfZero)
     p = Parser("input.txt", w)
-    # w.GoLeft(68)
-    # w.checkZero()
-    # w.GoLeft(30)
-    # w.checkZero()
-    # w.GoRight(48)
-    # w.checkZero()
-    # w.GetCountZero
 
 
 class WrapNum:
     def __init__(self, RANGE: int = 99, InitPointer: int = 50):
         self.RANGE = RANGE + 1
         self.CountOfZero = 0
+        self.NewSecurityProtocolCountOfZero = 0
         self.pointer = InitPointer
 
     def GoLeft(self, steps: int):
@@ -22,6 +18,9 @@ class WrapNum:
             self.pointer -= 1
             if self.pointer < 0:
                 self.pointer += 100
+
+            if self.pointer == 0 and i != steps - 1:
+                self.NewSecurityProtocolCountOfZero += 1
         # print(self.pointer)
 
     def GoRight(self, steps: int):
@@ -29,6 +28,9 @@ class WrapNum:
             self.pointer += 1
             if self.pointer >= self.RANGE:
                 self.pointer -= 100
+
+            if self.pointer == 0 and i != steps - 1:
+                self.NewSecurityProtocolCountOfZero += 1
         # print(self.pointer)
 
     def checkZero(self):
@@ -39,6 +41,10 @@ class WrapNum:
     @property
     def GetCountZero(self):
         return self.CountOfZero
+
+    @property
+    def GetNewSecurityProtocolCountOfZero(self):
+        return self.NewSecurityProtocolCountOfZero
 
 
 class Parser:
@@ -60,6 +66,8 @@ class Parser:
                 self.w.GoRight(steps)
             self.w.checkZero()
         print(self.w.CountOfZero)
+        print(self.w.GetNewSecurityProtocolCountOfZero)
+        print(f"sum: {self.w.CountOfZero + self.w.GetNewSecurityProtocolCountOfZero}")
 
 
 if __name__ == "__main__":
