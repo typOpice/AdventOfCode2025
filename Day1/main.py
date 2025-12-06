@@ -1,8 +1,6 @@
 def main():
     print("Hello, Fuzz 🐾")
     w = WrapNum()
-    # w.GoRight(1000)
-    # print(w.GetNewSecurityProtocolCountOfZero)
     p = Parser("input.txt", w)
 
 
@@ -65,8 +63,8 @@ class Parser:
                 steps = int(line[1:])
                 self.w.GoRight(steps)
             self.w.checkZero()
-        print(self.w.CountOfZero)
-        print(self.w.GetNewSecurityProtocolCountOfZero)
+        print(f"Part one {self.w.CountOfZero}")
+        print(f"Part two {self.w.GetNewSecurityProtocolCountOfZero}")
         print(f"sum: {self.w.CountOfZero + self.w.GetNewSecurityProtocolCountOfZero}")
 
 
