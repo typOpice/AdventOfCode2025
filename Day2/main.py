@@ -1,24 +1,22 @@
+from tabnanny import check
+
+
 def main():
     f = open("input.txt", "r")
 
     lines = f.readlines()
     f.close()
 
-    l = list(map(lambda x: x.strip(","), lines))
-    RawlistOfIDs = list(map(lambda x: x.split("-"), l)).pop(0)
-
-    listOfIDs = []
-    for i in range(0, len(RawlistOfIDs) - 2, 2):
-        t = []
-        t.append(RawlistOfIDs[i])
-        t.append(RawlistOfIDs[i + 1])
-        listOfIDs.append(t)
-
+    l = list(map(lambda x: x.split(","), lines)).pop(0)
+    # print(l)
+    listOfIDs = list(map(lambda x: list(map(int, x.split("-"))), l))
     print(listOfIDs)
 
+    # def checkForDoubles():
+    #     for i in range(len(listOfIDs)):
+    #         print(i)
 
-def checkForDoubles():
-    pass
+    # checkForDoubles()
 
 
 if __name__ == "__main__":
